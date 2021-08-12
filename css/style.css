@@ -111,3 +111,8 @@ button {
 #file {
     display: none;
 }
+.addFiles {
+    color: green;
+    font-size: 24px;
+    border: aqua solid 1px;
+}

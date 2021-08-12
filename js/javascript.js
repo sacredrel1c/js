@@ -224,7 +224,7 @@ function task17() {
         let files = "";
         for (let i = 0; i < filesList.length; i++) {
             files += filesList.item(i).name + " \n";
+            drop.innerHTML += "<p class='addFiles'>"+filesList.item(i).name+"</p>";
         }
-        alert("Выбраны для загрузки:\n" + files);
     }
 }
