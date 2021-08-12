@@ -6,6 +6,7 @@ window.onload = function () {
     scrollDetect();
     task15();
     task16();
+    task17();
 }
 
 function cssDisplayNone() {
@@ -140,49 +141,90 @@ function task13(command) {
         task13c.innerHTML = sessionStorage.getItem("content");
     }
 }
+
 function scrollDetect() {
     let yOffset = window.pageYOffset;
     let height = document.documentElement.clientHeight;
 
-    if(yOffset < height){
+    if (yOffset < height) {
         document.getElementById("task-14").classList.add("hidden");
-    }else {
+    } else {
         document.getElementById("task-14").classList.remove("hidden");
     }
-    window.addEventListener("scroll",scrollDetect);
+    window.addEventListener("scroll", scrollDetect);
 }
-function scrollToTop (){
-    if(window.pageYOffset > 0) {
-        window.scrollBy(0,-10);
-        setTimeout(scrollToTop,1);
+
+function scrollToTop() {
+    if (window.pageYOffset > 0) {
+        window.scrollBy(0, -10);
+        setTimeout(scrollToTop, 1);
     }
 }
-function task15(){
+
+function task15() {
     let big = document.getElementById("task-15-big");
     let small = document.getElementById("task-15-small");
-    big.onclick = function (event){
-        if(event.target !== big){
+    big.onclick = function (event) {
+        if (event.target !== big) {
             return;
         }
         alert("big");
     }
-    small.onclick = function (event){
+    small.onclick = function (event) {
         alert("small");
         return false;
     }
 }
-function task16(){
+
+function task16() {
     let button = document.getElementById("task-16");
     let square = document.getElementById("task-16-square");
-    const prevent = ev =>ev.preventDefault();
+    const prevent = ev => ev.preventDefault();
 
-    button.onclick = function (){
+    button.onclick = function () {
         square.classList.remove("hidden");
-        document.addEventListener("wheel", prevent,{passive:false} );
+        document.addEventListener("wheel", prevent, {passive: false});
     }
-    square.onclick = function (){
+    square.onclick = function () {
         square.classList.add("hidden");
         document.removeEventListener("wheel", prevent);
     }
 }
 
+function task17() {
+    let drop = document.getElementById("form-drop");
+    ["dragenter", "dragover", "dragleave", "drop"].forEach(event => {
+        drop.addEventListener(event, preventDefaults, false)
+    });
+
+    function preventDefaults(event) {
+        event.preventDefault();
+        event.stopPropagation();
+    }
+
+    ["dragenter", "dragover"].forEach(event => {
+        drop.addEventListener(event, activate, false)
+    });
+    ["dragleave", "drop"].forEach(event => {
+        drop.addEventListener(event, deactivate, false)
+    });
+
+    function activate() {
+        drop.classList.add("active");
+    }
+
+    function deactivate() {
+        drop.classList.remove("active");
+    }
+
+    drop.addEventListener("drop", handleDrop, false);
+
+    function handleDrop(event) {
+        let filesList = event.dataTransfer.files;
+        let files = "";
+        for (let i = 0; i < filesList.length; i++) {
+            files += filesList.item(i).name + " \n";
+        }
+        alert("Выбраны для загрузки:\n" + files);
+    }
+}
