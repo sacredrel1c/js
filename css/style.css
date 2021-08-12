@@ -61,3 +61,29 @@ button {
     margin: 20px;
     padding: 20px;
 }
+.backToTop {
+    position: fixed;
+    left: calc(100% - 100px);
+    bottom: 50px;
+
+}
+#task-15-big {
+    width: 300px;
+    height: 50px;
+    background: black;
+}
+#task-15-small {
+    margin: 15px auto auto;
+    width: 200px;
+    height: 20px;
+    background: lightblue;
+}
+#task-16-square {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: lightgrey;
+    opacity: 0.5;
+}

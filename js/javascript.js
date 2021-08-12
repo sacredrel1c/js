@@ -3,6 +3,9 @@ window.onload = function () {
     task11();
     task12();
     task13();
+    scrollDetect();
+    task15();
+    task16();
 }
 
 function cssDisplayNone() {
@@ -137,3 +140,49 @@ function task13(command) {
         task13c.innerHTML = sessionStorage.getItem("content");
     }
 }
+function scrollDetect() {
+    let yOffset = window.pageYOffset;
+    let height = document.documentElement.clientHeight;
+
+    if(yOffset < height){
+        document.getElementById("task-14").classList.add("hidden");
+    }else {
+        document.getElementById("task-14").classList.remove("hidden");
+    }
+    window.addEventListener("scroll",scrollDetect);
+}
+function scrollToTop (){
+    if(window.pageYOffset > 0) {
+        window.scrollBy(0,-10);
+        setTimeout(scrollToTop,1);
+    }
+}
+function task15(){
+    let big = document.getElementById("task-15-big");
+    let small = document.getElementById("task-15-small");
+    big.onclick = function (event){
+        if(event.target !== big){
+            return;
+        }
+        alert("big");
+    }
+    small.onclick = function (event){
+        alert("small");
+        return false;
+    }
+}
+function task16(){
+    let button = document.getElementById("task-16");
+    let square = document.getElementById("task-16-square");
+    const prevent = ev =>ev.preventDefault();
+
+    button.onclick = function (){
+        square.classList.remove("hidden");
+        document.addEventListener("wheel", prevent,{passive:false} );
+    }
+    square.onclick = function (){
+        square.classList.add("hidden");
+        document.removeEventListener("wheel", prevent);
+    }
+}
+
