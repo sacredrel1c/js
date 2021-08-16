@@ -50,7 +50,7 @@ function parseCSV(data){
     });
     let slicedMap = rowMap.slice(0,10);
     let rating = {};
-    let reducedMap = slicedMap.reduce(function (prev, currentCity, index) {
+    slicedMap.reduce(function (prev, currentCity, index) {
         let name = currentCity.get("name");
         let population = currentCity.get("population");
         rating[name] = {'population': population, 'rating': index+1};
@@ -63,4 +63,8 @@ function parseCSV(data){
         return text;
     };
 }
-console.log(parseCSV(data)(originData));
+window.onload = function () {
+    document.getElementById("text").innerHTML= "<p>"+parseCSV(data)(originData)+"</p>";
+}
+
+
