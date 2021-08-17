@@ -1,4 +1,11 @@
+body {
+	width: 100%;
+}
+#usersTable {
+	width:100%;
+}
 .rounded {
+	margin: 0 auto;
    font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
    font-size: 14px;
    border-radius: 10px;
