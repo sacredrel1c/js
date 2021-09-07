@@ -53,7 +53,7 @@ const config1 = {
         {title: 'Дата создания', value: 'birthday'},
         {title: 'Аватар', value: 'avatar'},
     ],
-    apiUrl: "https://mock-api.shpp.me/arasputnyjtest/users/"
+    apiUrl: "https://mock-api.shpp.me/arasputnyj/users/"
 };
 
 /**
