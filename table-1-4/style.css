@@ -64,3 +64,6 @@ body {
 .rounded tr td:last-child {
    border-right: none
 }
+.invalid {
+   border: 1px solid red;
+}
